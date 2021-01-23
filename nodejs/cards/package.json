@@ -1,0 +1,17 @@
+{
+  "name": "customers",
+  "version": "0.0.1",
+  "description": "How to create an API using Node.js",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: There isn't any kind of test in this project\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "leandrocapuano@gmail.com",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.12.3",
+    "express": "^4.12.3",
+    "nedb": "^1.1.2"
+  }
+}
