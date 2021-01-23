@@ -28,6 +28,7 @@ public class CardController {
     // ------------------- Creates a new card -------------------
     @PostMapping
     public ResponseEntity<Card> save (@RequestBody Card card){
+        
         Card savedCard = cardService.save(card);
 
         return new ResponseEntity(savedCard, HttpStatus.CREATED);
@@ -37,6 +38,10 @@ public class CardController {
     @GetMapping
     public ResponseEntity<List<Card>> findAll(){
         List<Card> cards = cardService.findAll();
+
+        if(cards.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
 
         return ResponseEntity.ok(cards);
     }

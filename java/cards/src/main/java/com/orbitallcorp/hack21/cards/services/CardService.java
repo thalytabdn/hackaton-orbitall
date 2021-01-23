@@ -79,6 +79,5 @@ public class CardService {
     //Delete a card receiving an id as parameter
 	public void deleteCardById(Long id) {
         cardRepository.deleteById(id);
-	}
-
+    }
 }
