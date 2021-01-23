@@ -2,6 +2,7 @@ const { request, response } = require('express')
 const neDB = require('../configurations/database')
 const api = {}
 
+// returns all registered cards
 api.findAll = (request, response) => {
     neDB.find({}).exec((exception, cards) => {
         if (exception) {
@@ -16,6 +17,7 @@ api.findAll = (request, response) => {
     })
 }
 
+// Creates a new card
 api.save = (request, response) => {
     const canonical = request.body
 
@@ -33,6 +35,7 @@ api.save = (request, response) => {
     })
 }
 
+// updates data for a particular card
 api.update = (request, response) => {
     const id = request.params.id;
     const canonical = request.body
@@ -50,6 +53,7 @@ api.update = (request, response) => {
     }) 
 }
 
+//deletes a card from the database
 api.remove = (request, response) => {
     const id = request.params.id;
     
@@ -67,6 +71,7 @@ api.remove = (request, response) => {
     } )
 }
 
+//returns a card according to the given id
 api.findById = (request, response) => {
     const id = request.params.id;
     
@@ -84,8 +89,11 @@ api.findById = (request, response) => {
     } )
 }
 
+//returns all cards ordered according to the parameters provided via query params
 api.orderBy = (request, response) => {
     
+    // this constant provides the fields to be ordered and how they will be ordered,
+    // following the neDB documentation
     const orderBy = request.query
 
     neDB.find({}).sort(orderBy).exec((exception, cards) => {
