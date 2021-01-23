@@ -85,8 +85,10 @@ api.findById = (request, response) => {
 }
 
 api.orderBy = (request, response) => {
+    
+    const orderBy = request.query
 
-    neDB.find({}).sort({ customerName : 1 }).exec((exception, cards) => {
+    neDB.find({}).sort(orderBy).exec((exception, cards) => {
         if (exception) {
             const setence = 'An error occurred while trying to order the cards!'
             console.log(setence, exception)
@@ -94,8 +96,8 @@ api.orderBy = (request, response) => {
             response.json({ 'mensagem': setence })
         }
 
-        //response.status(200)
-        //response.json(cards)
+        response.status(200)
+        response.json(cards)
     })
 }
 
