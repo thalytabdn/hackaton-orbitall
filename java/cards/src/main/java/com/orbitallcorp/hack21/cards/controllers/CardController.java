@@ -35,8 +35,16 @@ public class CardController {
 
     // ------------------- Returns all cards -------------------
     @GetMapping
-    public ResponseEntity<List<Card>> findAll(@RequestParam (required = false) String order){
-        List<Card> cards = cardService.findAll(order);
+    public ResponseEntity<List<Card>> findAll(){
+        List<Card> cards = cardService.findAll();
+
+        return ResponseEntity.ok(cards);
+    }
+
+    // ------------------- Return sorted cards -------------------
+    @GetMapping("/paginationAndSorting")
+    public ResponseEntity<List<Card>> paginationAndSorting(@RequestParam (required = false) String order){
+        List<Card> cards = cardService.order(order);
 
         return ResponseEntity.ok(cards);
     }

@@ -27,9 +27,18 @@ public class CardService {
         return cardRepository.save((card));
     }
 
-    // Return all the cards which can be ordered or not
-    // The cards can be ordered by: embossName, customerName and city 
-    public List<Card> findAll(String order){
+    // Return all the cards
+    public List<Card> findAll(){
+        List<Card> cards = new ArrayList<>();
+        
+        cardRepository.findAll().forEach(cards :: add);
+       
+        return cards;
+
+    }
+
+    //The cards can be ordered by: embossName, customerName and city 
+    public List<Card> order(String order){
         if(order == null){
             order = "";
         }
@@ -45,6 +54,9 @@ public class CardService {
         else if(order.equals("city")){
            cardRepository.getCardByCity().forEach(cards :: add);
         }
+        else if(order.equals("address")){
+            cardRepository.getCardByAddress().forEach(cards::add);
+         }
         else{
            cardRepository.findAll().forEach(cards :: add);
 

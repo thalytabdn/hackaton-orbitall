@@ -17,4 +17,7 @@ public interface CardRepository extends PagingAndSortingRepository<Card, Long> {
 
     @Query(value = "SELECT c FROM Card c ORDER BY c.city")
     List<Card> getCardByCity();
+
+    @Query(value = "SELECT c FROM Card c ORDER BY c.address")
+    List<Card> getCardByAddress();
 }
