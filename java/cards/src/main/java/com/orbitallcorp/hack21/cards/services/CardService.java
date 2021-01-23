@@ -12,13 +12,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class CardService {
     
-    /*
-    GET
-    POST PUT
-    DELETE
-    GET COM ID
-    GET PAGINAÇÃO E SORTING
-    */
     @Autowired
     private CardRepository cardRepository;
     
